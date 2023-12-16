@@ -58,6 +58,7 @@
 
 (define-public base-operating-system
   (operating-system
+	 (host-name "base-system")
 	 (kernel linux)
 	 (firmware (list linux-firmware))
 	 (initrd microcode-initrd)
@@ -85,7 +86,6 @@
 											bluez-alsa
 											git
 											ntfs-3g
-											exfat-utils
 											fuse-exfat
 											stow
 											vim
@@ -116,4 +116,11 @@
 								(bootloader grub-efi-bootloader)
 								(targets (list "/boot/efi"))
 								(keyboard-layout keyboard-layout)))
+	 (file-systems (cons*
+                   (file-system
+                     (mount-point "/tmp")
+                     (device "none")
+                     (type "tmpfs")
+                     (check? #f))
+                   %base-file-systems))
 	 ))

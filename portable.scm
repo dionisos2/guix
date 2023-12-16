@@ -12,16 +12,16 @@
 
 ;; SEE : https://config.daviwil.com/systems
 
-(define-module (dionisos-portable)
+(define-module (portable)
   #:use-module (base-system)
   #:use-module (gnu))
 
-;; (use-modules (base-system))
+(use-modules (base-system))
 
 (operating-system
 
  (inherit base-operating-system)
- (host-name "dionisos-portable")
+ (host-name "portable")
  (swap-devices (list (swap-space
                       (target (uuid
                                "289a2038-51ad-42af-970e-8cff434e727f")))))
