@@ -95,6 +95,7 @@
 											tlp
 											xf86-input-libinput
 											gvfs
+											qtile
 											)%base-packages))
 
 	 ;; Voici la liste des services du système.  Pour trouver les services disponibles,

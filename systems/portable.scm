@@ -14,9 +14,7 @@
 
 (define-module (portable)
   #:use-module (base-system)
-  #:use-module (gnu))
-
-(use-modules (base-system))
+  #:use-module (gnu)) ;; Why is it needed ?
 
 (operating-system
 
