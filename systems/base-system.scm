@@ -13,6 +13,8 @@
   #:use-module (gnu packages cups)
   #:use-module (gnu packages vim)
   #:use-module (gnu packages gtk)
+  #:use-module (gnu services dbus)
+  ;; #:use-module (gnu services blueman)
   #:use-module (gnu packages xorg)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages gnome)
@@ -102,8 +104,12 @@
 	 ;; lancez « guix system search MOT-CLÉ » dans un terminal.
 	 (services
 		(append (list
+						 (service bluetooth-service-type)
 						 (service gnome-desktop-service-type)
 						 (service xfce-desktop-service-type)
+						 ;; (simple-service 'dbus-extras
+             ;;    dbus-root-service-type
+             ;;    (list blueman))
 						 (set-xorg-configuration
 							(xorg-configuration (keyboard-layout keyboard-layout)))
 						 (service cups-service-type
