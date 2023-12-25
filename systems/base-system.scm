@@ -36,6 +36,13 @@
 (use-package-modules certs)
 (use-package-modules shells)
 
+(define-public %guix-hpc-pub-key
+	(plain-file "guix-hpc.pub"
+							"(public-key
+ (ecc
+  (curve Ed25519)
+  (q #89FBA276A976A8DE2A69774771A92C8C879E0F24614AAAAE23119608707B3F06#)))"))
+
 (define-public %nonguix-pub-key
   (plain-file "non-guix.pub"
 							"(public-key
@@ -50,10 +57,10 @@
 	 (guix-service-type config => (guix-configuration
 																 (inherit config)
 																 (substitute-urls
-																	(append (list "https://substitutes.nonguix.org")
+																	(append (list "https://substitutes.nonguix.org" "https://guix.bordeaux.inria.fr")
 																					%default-substitute-urls))
 																 (authorized-keys
-																	(append (list %nonguix-pub-key)
+																	(append (list %nonguix-pub-key %guix-hpc-pub-key)
 																					%default-authorized-guix-keys))))
 	 )
   )
