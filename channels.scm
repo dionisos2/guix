@@ -17,7 +17,32 @@
             (openpgp-fingerprint
              "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))
 			(channel
-          (name 'guix-hpc)
-          (url "https://gitlab.inria.fr/guix-hpc/guix-hpc.git")
-          (branch "master"))
+       (name 'guix-hpc)
+       (url "https://gitlab.inria.fr/guix-hpc/guix-hpc.git")
+       (branch "master"))
+
+			(channel
+       (name 'dionisos-guix-channel)
+       (url "https://github.com/dionisos2/dionisos-guix-channel.git")
+       (branch "master"))
+
+
+			;; (channel
+			;;  (name 'rosenthal)
+			;;  (url "https://codeberg.org/hako/rosenthal.git")
+			;;  (branch "trunk")
+			;;  (introduction
+			;; 	(make-channel-introduction
+			;; 	 "7677db76330121a901604dfbad19077893865f35"
+			;; 	 (openpgp-fingerprint
+			;; 		"13E7 6CD6 E649 C28C 3385  4DF5 5E5A A665 6149 17F7"))))
+			;; (channel
+			;;  (name 'guix-gaming-games)
+      ;;  (url "https://gitlab.com/guix-gaming-channels/games.git")
+      ;;  ;; Enable signature verification:
+      ;;  (introduction
+      ;;   (make-channel-introduction
+      ;;    "c23d64f1b8cc086659f8781b27ab6c7314c5cca5"
+      ;;    (openpgp-fingerprint
+      ;;     "50F3 3E2E 5B0C 3D90 0424  ABE8 9BDC F497 A4BB CC7F"))))
 			)
