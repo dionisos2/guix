@@ -27,7 +27,10 @@
   #:use-module (gnu packages version-control)
   #:use-module (gnu packages package-management)
   #:use-module (nongnu packages linux)
-  #:use-module (nongnu system linux-initrd))
+  #:use-module (nongnu system linux-initrd)
+	#:use-module (my-modules)
+	;; #:use-module (gnu packages sway)
+	)
 
 (use-service-modules nix)
 (use-service-modules desktop xorg)
@@ -89,7 +92,7 @@
 	 ;; des paquets et « guix install PAQUET » pour installer un paquet.
 
 	 (packages (append (list
-											(specification->package "nss-certs")
+											;; (specification->package "nss-certs")
 											epson-inkjet-printer-escpr
 											bluez
 											bluez-alsa
@@ -104,7 +107,8 @@
 											tlp
 											xf86-input-libinput
 											gvfs
-											qtile
+											my-qtile
+											sway
 											)%base-packages))
 
 	 ;; Voici la liste des services du système.  Pour trouver les services disponibles,

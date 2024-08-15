@@ -15,32 +15,9 @@
 (define-module (portable)
   #:use-module (base-system)
   #:use-module (gnu) ;; Why is it needed ?
-	#:use-module (nongnu packages nvidia)
-	#:use-module (nongnu services nvidia)
 	)
 
 (operating-system
- (kernel-arguments '("modprobe.blacklist=nouveau"
-                     ;; Set this if the card is not used for displaying or
-                     ;; you're using Wayland:
-                     ;; "nvidia_drm.modeset=1"
-										 ))
-
- (services
-  (cons* (service nvidia-service-type)
-         ;; Configure desktop environment, GNOME for example.
-         (service gnome-desktop-service-type
-                  ;; Enable NVIDIA support, only do this when the card is
-                  ;; used for displaying.
-                  (gnome-desktop-configuration
-                   (gnome (replace-mesa gnome))))
-         ;; Configure Xorg server, only do this when the card is used for
-         ;; displaying.
-         (set-xorg-configuration
-          (xorg-configuration
-           (modules (cons nvda %default-xorg-modules))
-           (drivers '("nvidia"))))
-				 ))
  (inherit base-operating-system)
  (host-name "portable")
  (swap-devices (list (swap-space
