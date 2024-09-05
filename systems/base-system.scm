@@ -30,6 +30,8 @@
   #:use-module (nongnu system linux-initrd)
 	#:use-module (my-modules)
 	;; #:use-module (gnu packages sway)
+	#:use-module (gnu packages android)
+	#:use-module (gnu system shadow)
 	)
 
 (use-service-modules nix)
@@ -84,7 +86,7 @@
 									(comment "Dionisos")
 									(group "users")
 									(home-directory "/home/dionisos")
-									(supplementary-groups '("wheel" "lp" "lpadmin" "netdev" "audio" "video")))
+									(supplementary-groups '("wheel" "lp" "lpadmin" "netdev" "audio" "video" "adbusers")))
 								 %base-user-accounts))
 
 	 ;; Paquets installés pour tout le système. Les utilisateurs et utilisatrices peuvent aussi installer des paquets
@@ -128,6 +130,8 @@
 											 (web-interface? #t)
 											 (extensions
 												(list cups-filters epson-inkjet-printer-escpr))))
+						 (udev-rules-service 'android android-udev-rules
+																 #:groups '("adbusers"))
 						 ) %my-services))
 	 
 	 (bootloader (bootloader-configuration
